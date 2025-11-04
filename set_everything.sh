@@ -32,7 +32,7 @@ fi
 # 3. dotfiles
 echo "Copying config files to $HOME..."
 
-CONFIG_FILES=".zshrc .vimrc .p10k.zsh"
+CONFIG_FILES=".vimrc .p10k.zsh"
 
 for file in $CONFIG_FILES; do
     SOURCE_FILE="$SCRIPT_DIR/$file"
@@ -43,6 +43,28 @@ for file in $CONFIG_FILES; do
         echo "Warning: $file not found in $SCRIPT_DIR. Skipping."
     fi
 done
+
+# 3a. Configure .zshrc ---
+P10K_SOURCE_LINE='source ~/powerlevel10k/powerlevel10k.zsh-theme'
+P10K_CONFIG_COMMENT='# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.'
+P10K_CONFIG_LINE='[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh'
+
+if ! grep -qF "$P10K_SOURCE_LINE" "$ZSHRC_PATH"; then
+    echo "Adding Powerlevel10k source to $ZSHRC_PATH"
+    echo "\n# Powerlevel10k Theme
+$P10K_SOURCE_LINE" >> "$ZSHRC_PATH"
+else
+    echo "Powerlevel10k source already in $ZSHRC_PATH."
+fi
+
+if ! grep -qF "$P10K_CONFIG_LINE" "$ZSHRC_PATH"; then
+    echo "Adding Powerlevel10k config to $ZSHRC_PATH"
+    echo "\n# Powerlevel10k Config
+$P10K_CONFIG_COMMENT
+$P10K_CONFIG_LINE" >> "$ZSHRC_PATH"
+else
+    echo "Powerlevel10k config already in $ZSHRC_PATH."
+fi
 
 printf "Relaunch shell to apply changes now? (y/n) "
 read -r response
