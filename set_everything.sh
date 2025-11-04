@@ -35,7 +35,7 @@ echo "Copying config files to $HOME..."
 CONFIG_FILES=".vimrc .p10k.zsh"
 
 for file in $CONFIG_FILES; do
-    SOURCE_FILE="$SCRIPT_DIR/$file"
+    SOURCE_FILE="$SCRIPT_DIR/dotfiles/$file"
     if [ -f "$SOURCE_FILE" ]; then
         cp -f "$SOURCE_FILE" "$HOME/"
         echo "Copied $file."
