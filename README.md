@@ -17,5 +17,5 @@ rm -rf term_setup
 This setup relies on the following projects:
 
 - **prompt** ~ [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- **vim Theme** ~ [Everforest](https://github.com/sainnhe/everforest)
+- **vim theme** ~ [Everforest](https://github.com/sainnhe/everforest)
 - **base .vimrc** ~ [Basic vim](https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim)
