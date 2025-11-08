@@ -94,6 +94,9 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+set number
+set relativenumber
+
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -127,6 +130,12 @@ au TabLeave * let g:lasttab = tabpagenr()
 highlight! link StatusLine Normal
 highlight! link StatusLineNC Normal
 
+highlight Normal ctermbg=Black guibg=#000000
 
+" 3. Imposta il COLORE DEI NUMERI (foreground) su un grigio/marrone chiaro e tenue.
+"    'DarkGray' è un colore cterm standard. Il codice esadecimale #6B8E23 (Olive Drab) è un verde-marrone tenue.
+highlight LineNr ctermfg=DarkGray guifg=#A9A9A9 " A9A9A9 è un DarkGray
 
-
+" 4. Imposta il colore del numero sulla riga corrente (CursorLineNr).
+"    Per coerenza, lo impostiamo su un bianco o un colore leggermente più visibile.
+highlight CursorLineNr ctermfg=White guifg=#F5F5F5
